@@ -714,7 +714,8 @@ bool A2dpCodecs::init() {
       log::info("OPUS codec disabled, updated priority to {}", codec_priority);
     }
 
-    if (codec_index == BTAV_A2DP_CODEC_INDEX_SOURCE_LHDCV5) {
+    if (!com_android_bluetooth_flags_lhdc_codec_support() &&
+        codec_index == BTAV_A2DP_CODEC_INDEX_SOURCE_LHDCV5) {
       codec_priority = BTAV_A2DP_CODEC_PRIORITY_DISABLED;
       log::info("LHDCv5 codec disabled");
     }
